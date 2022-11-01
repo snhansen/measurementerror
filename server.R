@@ -163,14 +163,14 @@ server <- function(input, output) {
             text = element_text(size = 20))
     
     # If points and measurement error is off, return base plot.
-    if (!merror & !points) {
+    if (!points & !merror) {
       res_plot <- base_plot
     }
     
     # If measurement error is on, then add a line based on this data.
     # We add the points to graph but make them invisible in order for
     # the axes to be identical when toggling points on and off.
-    if (!points & merror) {
+    else if (!points & merror) {
       res_plot <- base_plot +
         geom_abline(aes(color = "Linear fit (with error)",
                         linetype = "Linear fit (with error)",
@@ -195,7 +195,7 @@ server <- function(input, output) {
     
     # If points are on but measurement error is off, return base plot
     # with scatter plot of original data added to it.
-    if (points & !merror) {
+    else if (points & !merror) {
       res_plot <- base_plot +
         new_scale_color() +
         geom_point(data = dat,
@@ -220,7 +220,7 @@ server <- function(input, output) {
     
     # If both points and measurement error are on, return a plot with
     # scatter plots and lines based on both data sets added to it.
-    if (points & merror) {
+    else if (points & merror) {
       res_plot <- base_plot +
         geom_abline(aes(color = "Linear fit (with error)",
                         linetype = "Linear fit (with error)",
