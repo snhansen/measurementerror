@@ -39,10 +39,10 @@ server <- function(input, output) {
     case2 <- (input$n < 2) | ((input$n %% 1) != 0)
     feedback_text <- ""
     if (case1) {
-      feedback_text <- paste0("Too many observations (maximum allowed is ", max_obs, ")")
+      feedback_text <- paste0("Too many observations (maximum allowed is ", max_obs, ").")
     }
     else if (case2) {
-      feedback_text <- paste0("Number of observations needs to be an integer >= 2")
+      feedback_text <- paste0("Number of observations needs to be an integer >= 2.")
     }
     feedbackWarning("n", case1 | case2, feedback_text)
   })
