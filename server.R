@@ -113,7 +113,7 @@ server <- function(input, output) {
   })
 
   # Make various plots depending on the user-specified preferences.
-  make_plot <- function(dat, error_dat, betas, coefs, error_coefs, points, merror, connect = FALSE, ptrans = 1, ltrans = 0.1) {
+  make_plot <- function(dat, error_dat, betas, coefs, error_coefs, points, merror, connect, ptrans, ltrans) {
     
     # Return NULL if no valid data is available.
     if (is.null(dat)) {
