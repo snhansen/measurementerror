@@ -211,8 +211,6 @@ server <- function(input, output) {
                            values = c("Observations (without error)" = 16)) +
         scale_color_manual(name = "",
                            values = c("Observations (without error)" = "black")) +
-        theme(legend.position = "bottom",
-              text = element_text(size = 20)) +
         guides(size = guide_legend(order = 1),
                color = guide_legend(order = 1),
                shape = guide_legend(order = 1))
@@ -259,8 +257,6 @@ server <- function(input, output) {
         scale_color_manual(name = "",
                            values = c("Observations (without error)" = "black",
                                       "Observations (with error)" = "red")) +
-        theme(legend.position = "bottom",
-              text = element_text(size = 20)) +
         guides(size = guide_legend(order = 1),
                color = guide_legend(order = 1),
                shape = guide_legend(order = 1))
