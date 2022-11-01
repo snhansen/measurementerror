@@ -128,7 +128,7 @@ server <- function(input, output) {
                        error_dat = NULL,
                        betas = betas,
                        coefs = coefs,
-                       error_coefs = error_coefs,
+                       error_coefs = NULL,
                        points = points,
                        merror = FALSE,
                        connect = FALSE,
