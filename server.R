@@ -51,7 +51,7 @@ server <- function(input, output) {
   dat <- eventReactive(input$generate, {
     if (valid()) {
       x <- runif(input$n, 0, 10)
-      y <- input$beta0 + input$beta1 * x + rnorm(input$n, 0, input$sd_res)
+      y <- input$beta0 + input$beta1*x + rnorm(input$n, 0, input$sd_res)
       data.frame(x, y)
     }
     else {
@@ -85,8 +85,8 @@ server <- function(input, output) {
       new_dat <- dat()
       which_x <- input$xrange[1] <= new_dat$x & new_dat$x <= input$xrange[2]
       which_y <- input$yrange[1] <= new_dat$y & new_dat$y <= input$yrange[2]
-      new_dat$x[which_y] <- new_dat$x[which_y] + rnorm(sum(which_y), input$error_mean_x, max(input$error_sd_x, 0))
-      new_dat$y[which_x] <- new_dat$y[which_x] + rnorm(sum(which_x), input$error_mean_y, max(input$error_sd_y, 0))
+      new_dat$x[which_y] <- new_dat$x[which_y] + rnorm(sum(which_y), input$error_mean_x, input$error_sd_x, 0)
+      new_dat$y[which_x] <- new_dat$y[which_x] + rnorm(sum(which_x), input$error_mean_y, input$error_sd_y, 0)
       new_dat
     }
     else {
