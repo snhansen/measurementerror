@@ -55,7 +55,7 @@ ui <- fluidPage(
                radioButtons("toggle_error",
                             label = "Measurement error:",
                             choices = c("On", "Off"),
-                            selected = "Off",
+                            selected = "On",
                             inline = TRUE)),
            div(style = "padding: 0px 0px 0px 0px;",
                radioButtons("toggle_connect",
