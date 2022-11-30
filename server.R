@@ -62,8 +62,8 @@ server <- function(input, output) {
   # If data has succesfully been generated, then we store 
   # the true parameters and fit a linear regression model.
   observeEvent(input$generate, {
-    betas$vals <- c(input$beta0, input$beta1)
     if (!is.null(dat())) {
+      betas$vals <- c(input$beta0, input$beta1)
       model1 <- lm(y ~ x, dat())
       coefs$vals <- model1$coef
       coefs$lower <- confint(model1)[, 1]
@@ -81,6 +81,7 @@ server <- function(input, output) {
   # If data has succesfully been generated and measurement error inputs
   # are valid, then a data set with measurement error is created.
   error_dat <- reactive({
+    req(input$error_mean_x, input$error_mean_y, input$error_sd_x, input$error_sd_y)
     if (input$error_sd_x >= 0 & input$error_sd_y >= 0 & !is.null(dat())) {
       new_dat <- dat()
       which_x <- input$xrange[1] <= new_dat$x & new_dat$x <= input$xrange[2]
