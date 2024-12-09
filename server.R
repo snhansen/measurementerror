@@ -84,10 +84,10 @@ server <- function(input, output) {
     req(input$error_mean_x, input$error_mean_y, input$error_sd_x, input$error_sd_y)
     if (input$error_sd_x >= 0 & input$error_sd_y >= 0 & !is.null(dat())) {
       new_dat <- dat()
-      which_x <- input$xrange[1] <= new_dat$x & new_dat$x <= input$xrange[2]
-      which_y <- input$yrange[1] <= new_dat$y & new_dat$y <= input$yrange[2]
-      new_dat$x[which_y] <- new_dat$x[which_y] + rnorm(sum(which_y), input$error_mean_x, input$error_sd_x)
-      new_dat$y[which_x] <- new_dat$y[which_x] + rnorm(sum(which_x), input$error_mean_y, input$error_sd_y)
+      meas_error_x <- (input$x_xrange[1] <= new_dat$x & new_dat$x <= input$x_xrange[2]) & (input$x_yrange[1] <= new_dat$y & new_dat$y <= input$x_yrange[2])
+      meas_error_y <- (input$y_xrange[1] <= new_dat$x & new_dat$x <= input$y_xrange[2]) & (input$y_yrange[1] <= new_dat$y & new_dat$y <= input$y_yrange[2])
+      new_dat$x[meas_error_x] <- new_dat$x[meas_error_x] + rnorm(sum(meas_error_x), input$error_mean_x, input$error_sd_x)
+      new_dat$y[meas_error_y] <- new_dat$y[meas_error_y] + rnorm(sum(meas_error_y), input$error_mean_y, input$error_sd_y)
       new_dat
     }
     else {
