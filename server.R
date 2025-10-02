@@ -145,12 +145,12 @@ server <- function(input, output) {
                       linetype = "True line",
                       slope = betas$vals[2],
                       intercept = betas$vals[1]),
-                  size = 1) +
+                  linewidth = 1) +
       geom_abline(aes(color = "Linear fit (without error)",
                       linetype = "Linear fit (without error)",
                       slope = coefs$vals[2],
                       intercept = coefs$vals[1]),
-                  size = 1) +
+                  linewidth = 1) +
       scale_color_manual(name = "",
                          values = c("True line" = "orange",
                                     "Linear fit (without error)" = "black")) +
@@ -177,7 +177,7 @@ server <- function(input, output) {
                         linetype = "Linear fit (with error)",
                         slope = error_coefs$vals[2],
                         intercept = error_coefs$vals[1]),
-                    size = 1) +
+                    linewidth = 1) +
         scale_color_manual(name = "",
                            values = c("True line" = "orange",
                                       "Linear fit (without error)" = "black",
@@ -225,7 +225,7 @@ server <- function(input, output) {
                         linetype = "Linear fit (with error)",
                         slope = error_coefs$vals[2],
                         intercept = error_coefs$vals[1]),
-                    size = 1) +
+                    linewidth = 1) +
         scale_color_manual(name = "",
                            values = c("True line" = "orange",
                                       "Linear fit (without error)" = "black",
@@ -309,13 +309,25 @@ server <- function(input, output) {
       x_lower <- -10
     }
     updateSliderInput(
-      inputId = "yrange",
+      inputId = "x_yrange",
       min = y_lower,
       max = y_upper,
       value = c(y_lower, y_upper)
     )
     updateSliderInput(
-      inputId = "xrange",
+      inputId = "y_yrange",
+      min = y_lower,
+      max = y_upper,
+      value = c(y_lower, y_upper)
+    )
+    updateSliderInput(
+      inputId = "x_xrange",
+      min = x_lower,
+      max = x_upper,
+      value = c(x_lower, x_upper)
+    )
+    updateSliderInput(
+      inputId = "y_xrange",
       min = x_lower,
       max = x_upper,
       value = c(x_lower, x_upper)
